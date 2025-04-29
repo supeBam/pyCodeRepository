@@ -1,24 +1,30 @@
 class Solution:
     def punishmentNumber(self, n: int) -> int:
 
-        nums = [str(i) for i in str(n)]
-        ans = []
-        path = []
+        def dfs(curPot: int, numStr: str, total: int, target: int) -> bool:
+            # 边界
+            if curPot == len(numStr):
+                return  total == target
 
-        def dfs(deep):
-            if deep == len(nums) and sum(nums) == s:
-                ans.append(path.copy())
-                return
+            sums = 0
+            for i in range(curPot, len(numStr)):
+                # 当前元素
+                sums = sums * 10 + int(numStr[i])
+                # 超出目标值，直接剪枝
+                if sums + total > target:
+                    break
+                if dfs(i + 1, numStr, sums + total, target):
+                    return True
 
-            for i in range(deep, len(nums)):
-                path.append(''.join(nums[deep: i + 1]))
-                dfs(i + 1)
-                path.pop()
+            return False
 
-        dfs(0)
-        return len(ans)
+        ans = 0
+        for i in range(1, n + 1):
+            if dfs(0, str(i * i), 0, i):
+                ans += i * i
+        return ans
 
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.punishmentNumber(1))
+    print(s.punishmentNumber(36))
