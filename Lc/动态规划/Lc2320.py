@@ -5,6 +5,7 @@ class Solution:
     两块地的时候 dp[0] = 1 dp[1] = 2 dp[2] = 3 dp[3] = 5  dp[4] = 8
     dp[n] = dp[n - 1] + dp[n - 2]
     '''
+
     def countHousePlacements(self, n: int) -> int:
         mod = 1_000_000_000 + 7
         if n == 1:
@@ -17,6 +18,18 @@ class Solution:
 
         return (dp[n] * dp[n]) % mod
 
+    def countHousePlacements2(self, n: int) -> int:
+        mod = 1_000_000_000 + 7
+        if n == 1:
+            return 4
+        a = 1
+        b = 2
+        for i in range(2, n + 1):
+            a, b = b, a + b
+
+        return (b * b) % mod
+
+
 if __name__ == '__main__':
     s = Solution()
-    print(s.countHousePlacements(2))
+    print(s.countHousePlacements2(2))
