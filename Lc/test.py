@@ -1,3 +1,4 @@
+from collections import Counter
 
 numRows = 5
 c = [[1] * (i + 1) for i in range(numRows)]
@@ -26,7 +27,10 @@ def count_unique_substrings(s: str) -> int:
         res += right - left + 1  # 新增的子串数
     return res
 
-
-
-
 print(count_unique_substrings('abcabcbb'))
+
+power = [1, 1, 3, 4]
+cnt = Counter(power)
+a = sorted(cnt.keys())
+print(cnt)
+print(a)
