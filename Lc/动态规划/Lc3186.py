@@ -15,7 +15,9 @@ class Solution:
             dp[i + 1] = max(dp[i], dp[j] + cnt[v] * v)
         return dp[-1]
 
+
 if __name__ == '__main__':
     s = Solution()
     # print(s.maximumTotalDamage([1, 1, 3, 4]))
-    print(s.maximumTotalDamage([1, 1, 1, 1, 1, 1]))
+    print(s.maximumTotalDamage([7, 1, 6, 6]))
+    # print(s.maximumTotalDamage([1, 1, 1, 1, 1, 1]))
