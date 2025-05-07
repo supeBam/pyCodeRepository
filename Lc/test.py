@@ -1,4 +1,5 @@
 from collections import Counter
+from email.charset import Charset
 
 numRows = 5
 c = [[1] * (i + 1) for i in range(numRows)]
@@ -39,3 +40,6 @@ memo = {}
 memo[1] = 1
 print(memo.get(1, 0))
 print(memo.get(2, 0))
+
+print(ord("a"))
+print(type(ord("a")))
