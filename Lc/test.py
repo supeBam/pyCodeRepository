@@ -34,3 +34,8 @@ cnt = Counter(power)
 a = sorted(cnt.keys())
 print(cnt)
 print(a)
+
+memo = {}
+memo[1] = 1
+print(memo.get(1, 0))
+print(memo.get(2, 0))
