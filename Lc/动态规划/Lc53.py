@@ -15,6 +15,17 @@ class Solution:
 
         return max(dp)
 
+    def maxSubArray2(self, nums: List[int]) -> int:
+        # 正数一定选、负数和0 则重新开始
+        dp = [0] * len(nums)
+        dp[0] = nums[0]
+
+        for i in range(1, len(nums)):
+            dp[i] = max(dp[i - 1], 0) + nums[i]
+
+        return max(dp)
+
+
 if __name__ == '__main__':
     s = Solution()
-    print(s.maxSubArray([5,4,-1,7,8]))
+    print(s.maxSubArray([5, 4, -1, 7, 8]))
